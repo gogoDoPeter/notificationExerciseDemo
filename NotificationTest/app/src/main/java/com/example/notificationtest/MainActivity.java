@@ -108,7 +108,8 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         channel.setShowBadge(true);
         NotificationManager notificationManager = (NotificationManager) getSystemService(
                 NOTIFICATION_SERVICE);
-        notificationManager.createNotificationChannel(channel);
+        if(notificationManager != null)
+            notificationManager.createNotificationChannel(channel);
     }
 
     public void sendChatMsg(View view) {
@@ -190,6 +191,8 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     public void closeMsg(View view) {
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         //取消通知
+        manager.cancel(1);
+        manager.cancel(2);
         manager.cancel(3);
     }
 }
